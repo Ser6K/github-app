@@ -1,4 +1,5 @@
-import { ApolloClient, InMemoryCache, ApolloLink, HttpLink } from '@apollo/client'
+import { ApolloClient, ApolloLink, HttpLink } from '@apollo/client'
+import cache from './cache'
 
 const { API_AUTH_TOKEN } = process.env
 
@@ -14,7 +15,7 @@ const client = new ApolloClient({
     }),
     new HttpLink({ uri: "https://api.github.com/graphql" })
   ]),
-  cache: new InMemoryCache()
+  cache,
 })
 
 export default client

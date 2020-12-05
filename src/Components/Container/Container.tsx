@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ContainerTypes } from './types'
+
+import SearchForm from 'src/components/SearchForm'
 
 import styles from './Container.module.scss'
 
-const Container:React.FC<ContainerTypes> = ({ isEmpty, isLoading, children }) => {
+const Container:React.FC<ContainerTypes> = ({ isEmpty, isLoading, children, onFormSubmit }) => {
+  const [searchQuery, setSearchQuery] = useState('')
+  let contentElement = null
+
+  if (isLoading) {
+    contentElement = <div>Loading</div>
+  } else if (isEmpty && searchQuery.length > 0) {
+    contentElement = <div>No results</div>
+  } else if (searchQuery.length === 0) {
+    contentElement = <div>Start searching</div>
+  } else {
+    contentElement = children
+  }
+
   return (
     <div className={styles.container}>
-      {children}
+      <SearchForm onFormSubmit={handleSubmitForm} />
+      {contentElement}
     </div>
   )
+
+  function handleSubmitForm(query: string) {
+    setSearchQuery(query)
+    onFormSubmit(query)
+  }
 }
 
 export default Container

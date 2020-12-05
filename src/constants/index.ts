@@ -1,0 +1,1 @@
+export const RESULT_ITEMS_COUNT = 10

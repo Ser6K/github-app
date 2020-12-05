@@ -5,17 +5,17 @@ import {
   Route,
 } from 'react-router-dom'
 
-import UsersRoute from './UsersRoute'
-import RepositoryRoute from './RepositoryRoute'
+import UsersPage from './UsersPage'
+import RepositoryPage from './RepositoryPage'
 
 const Routes = () => (
   <Router>
     <Switch>
       <Route exact path="/">
-        <UsersRoute />
+        <UsersPage />
       </Route>
       <Route exact path="/repository/:Id">
-        <RepositoryRoute />
+        <RepositoryPage />
       </Route>
     </Switch>
   </Router>

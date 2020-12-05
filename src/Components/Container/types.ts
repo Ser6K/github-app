@@ -1,5 +1,6 @@
 export interface ContainerTypes {
-  children: JSX.Element
+  children: JSX.Element | (null | JSX.Element)[]
   isLoading: boolean
   isEmpty: boolean
+  onFormSubmit: (query: string) => void
 }

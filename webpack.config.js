@@ -1,6 +1,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const Dotenv = require('dotenv-webpack');
 
 const outputPath = path.join(__dirname, "client")
 
@@ -11,6 +12,8 @@ const config = {
     publicPath: '/',
     filename: "main.js",
   },
+  mode: "development",
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -70,7 +73,8 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ template: "./public/index.html" })
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
+    new Dotenv(),
   ],
 }
 

@@ -1,9 +1,13 @@
 import React from 'react'
-import Routes from 'src/Routes'
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from 'src/apollo/client'
+import Routes from 'src/routes'
 
 const App:React.FC = () => {
   return (
-    <Routes />
+    <ApolloProvider client={apolloClient}>
+      <Routes />
+    </ApolloProvider>
   )
 }
 

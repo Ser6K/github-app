@@ -1,8 +1,8 @@
 import React, { SyntheticEvent } from 'react'
 import { FormTypes } from './types'
 
-import Button from 'src/Components/Button'
-import Input from 'src/Components/Input'
+import Button from 'src/components/Button'
+import Input from 'src/components/Input'
 
 import styles from './Form.module.scss'
 

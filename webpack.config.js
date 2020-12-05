@@ -6,6 +6,11 @@ const outputPath = path.join(__dirname, "client")
 
 const config = {
   entry: "./src/index.tsx",
+  output: {
+    path: outputPath,
+    publicPath: '/',
+    filename: "main.js",
+  },
   module: {
     rules: [
       {
@@ -50,18 +55,18 @@ const config = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-  },
-  output: {
-    path: outputPath,
-    filename: "main.js",
+    alias: {
+      src: path.resolve(__dirname, "src"),
+    }
   },
   devServer: {
     contentBase: outputPath,
-    compress: true,
     port: 4000,
+    compress: true,
+    hot: true,
     historyApiFallback: true,
     stats: "errors-only",
-    open: 'Google Chrome'
+    open: "Google Chrome"
   },
   plugins: [
     new CleanWebpackPlugin(),

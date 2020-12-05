@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -17,4 +18,7 @@
     "src",
     "typings/declarations.d.ts"
   ],
+  "paths": {
+    "src/*": ["src/*"]
+  }
 }

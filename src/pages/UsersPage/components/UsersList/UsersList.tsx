@@ -33,7 +33,7 @@ const UsersList:React.FC<UsersListTypes> = ({ users, onClickUser, selectedUserId
               alt={`${edge.node.name} avatar image`}
             />
             <p className={styles['list-item-name']}>
-              {edge.node.name != null && edge.node.name.length > 0 ? edge.node.name : edge.node.login}
+              {edge.node.name != null && edge.node.name.length > 0 ? edge.node.name : edge.node.login ?? '-'}
             </p>
           </div>
         ))}

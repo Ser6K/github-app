@@ -1,21 +1,35 @@
 import React, { useState } from 'react'
 import { InputTypes } from './types'
 
+import cx from 'classnames'
+
 import styles from './Input.module.scss'
 
-const Input:React.FC<InputTypes> = ({ type, value = '', onValueChange }) => {
+const Input:React.FC<InputTypes> = ({ type, value = '', onValueChange, className, ...props }) => {
   const [inputValue, setInputValue] = useState(value)
+
+  if (type === 'textarea') {
+    return (
+      <textarea
+        {...props}
+        className={cx(styles.textarea, className)}
+        onChange={handleChangeInput}
+        value={inputValue}
+      />
+    )
+  }
 
   return (
     <input
+      {...props}
       type={type}
-      className={styles.input}
+      className={cx(styles.input, className)}
       onChange={handleChangeInput}
       value={inputValue}
     />
   )
 
-  function handleChangeInput(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChangeInput(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     if (typeof onValueChange !== 'function') {
       return
     }

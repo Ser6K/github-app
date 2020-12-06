@@ -3,7 +3,8 @@ import { gql, useQuery } from '@apollo/client'
 
 import Button from 'src/components/Button'
 import ResultContainer from 'src/components/ResultContainer'
-import IssuesList, { ISSUE_FRAGMENT } from './components/IssuesList'
+import IssuesTop from '../IssuesTop'
+import IssuesList, { ISSUE_FRAGMENT } from '../IssuesList'
 
 import { RESULT_ITEMS_COUNT } from 'src/constants'
 import { RepositoryIssuesTypes } from './types'
@@ -40,14 +41,13 @@ const RepositoryIssues: React.FC<RepositoryIssuesTypes> = ({ repositoryId }) => 
   const issues = data?.node?.issues?.edges ?? []
   const hasNextPage = data?.node?.issues?.pageInfo?.hasNextPage ?? false
   const resultContainerMessage = error != null ? 'Something went wrong! Please try again later!' : 'No issues found'
-  let elementContent = null
 
   return (
     <div className={styles.wrapper}>
-      {elementContent}
+      <IssuesTop />
       <ResultContainer
         isLoading={loading}
-        showMessage={issues.length === 0 || error}
+        showMessage={issues.length === 0 || error != null}
         messageText={resultContainerMessage}
       >
         <IssuesList issues={issues} />

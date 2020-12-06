@@ -10,9 +10,7 @@ const RepositoryPage:React.FC = () => {
   const { id }: { id: string } = useParams()
 
   return (
-    <Container
-      onFormSubmit={() => {}}
-    >
+    <Container>
       <RepositoryInfo repositoryId={id} />
       <RepositoryIssues repositoryId={id} />
     </Container>

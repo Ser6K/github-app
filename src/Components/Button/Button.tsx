@@ -4,10 +4,10 @@ import cx from 'classnames'
 
 import styles from './Button.module.scss'
 
-const Button:React.FC<ButtonTypes> = ({ type, onClick, className, children, disabled }) => (
+const Button:React.FC<ButtonTypes> = ({ type, onClick, className, children, disabled, color = '' }) => (
   <button
     type={type}
-    className={cx(styles.button, className, { [styles.disabled]: disabled })}
+    className={cx(styles.button, className, { [styles.disabled]: disabled, [styles[color]]: color.length > 0 })}
     onClick={onClick}
   >
     {children}

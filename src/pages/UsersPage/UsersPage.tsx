@@ -26,8 +26,6 @@ const USERS_QUERY = gql`
   ${USER_FRAGMENT}
 `
 
-/* TODO: Revise styling if time permits */
-
 const UsersPage:React.FC = () => {
   const searchQuery = getUrlSearchParamValue('q')
   const location = useLocation()

@@ -26,7 +26,7 @@ const IssuesList: React.FC<IssuesListTypes> = ({ issues }) => (
           {node.title}
         </p>
         <p className={styles['list-item-info']}>
-          Created {getDaysAgoText(node.createdAt)} by <span className={styles['list-item-info-author']}>{node.author.login}</span>
+          Created {getDaysAgoText(node.createdAt)} by <span className={styles['list-item-info-author']}>{node.author?.login ?? '-'}</span>
         </p>
       </div>
     ))}

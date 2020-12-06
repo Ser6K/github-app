@@ -1,0 +1,33 @@
+.modal-top {
+  padding: 15px 0;
+
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+  .modal-top-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+  }
+}
+.modal-form {
+  padding: 20px;
+  box-sizing: border-box;
+
+  .form-input {
+    margin-bottom: 20px;
+  }
+
+  .form-textarea {
+    margin-bottom: 20px;
+    height: 150px;
+    resize: vertical;
+  }
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    button + button {
+      margin-left: 10px;
+    }
+  }
+}

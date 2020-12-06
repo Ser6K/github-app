@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { gql, useQuery } from '@apollo/client'
 
 import { Link } from 'react-router-dom'
@@ -7,6 +7,8 @@ import Button from 'src/components/Button'
 
 import { RESULT_ITEMS_COUNT } from 'src/constants'
 import { UserRepositoriesListTypes, RepositoryTypes } from './types'
+
+import styles from './UserRepositoriesList.module.scss'
 
 export const REPOSITORY_FRAGMENT = gql`
   fragment Repository_Fragment on Repository {
@@ -44,12 +46,8 @@ const REPOSITORIES_QUERY = gql`
 `
 
 const RepositoriesList:React.FC<UserRepositoriesListTypes> = ({ userId }) => {
-  const queryVariables = { id: userId, first: RESULT_ITEMS_COUNT }
-  const { data, loading, fetchMore } = useQuery(REPOSITORIES_QUERY, { variables: queryVariables })
-
-  if (loading) {
-    return <div>Loading</div>
-  }
+  const [isFetchMoreLoading, setFetchMoreLoading] = useState(false)
+  const { data, loading, fetchMore } = useQuery(REPOSITORIES_QUERY, { variables: { id: userId, first: RESULT_ITEMS_COUNT } })
 
   const repositories = data?.node?.repositories?.edges ?? []
   const hasNextPage = data?.node?.repositories?.pageInfo?.hasNextPage ?? false
@@ -57,40 +55,59 @@ const RepositoriesList:React.FC<UserRepositoriesListTypes> = ({ userId }) => {
   let contentElement = null
 
   if (loading) {
-    contentElement = <div>Loading</div>
+    contentElement = <div className={styles.centered}>Loading</div>
   } else if (repositories.length === 0) {
-    contentElement = <div>No Repositories</div> 
+    contentElement = <div className={styles.centered}>No Repositories</div>
   } else {
-    contentElement = repositories.map((repository: { node: RepositoryTypes }) => (
-      <Link
-        to={`/repository/${repository.node.id}`}
-        key={repository.node.id}
-      >
-        <p>
-          {repository.node.name}
-        </p>
-        <p>
-          {repository.node.stargazerCount} stars / {repository.node.watchers.totalCount} watchers
-        </p>
-      </Link>
-    ))
+    contentElement = (
+      <div className={styles.list}>
+        {contentElement = repositories.map((repository: { node: RepositoryTypes }) => {
+          const { id, name, stargazerCount, watchers } = repository.node
+
+          return (
+            <Link
+              to={`/repository/${id}`}
+              key={id}
+              className={styles['list-item']}
+            >
+              <p className={styles['list-item-name']}>
+                {name}
+              </p>
+              <p className={styles['list-item-stats']}>
+                {stargazerCount} {stargazerCount === 1 ? 'star' : 'stars'} / {watchers.totalCount} {watchers.totalCount === 1 ? 'watcher' : 'watchers'}
+              </p>
+            </Link>
+          )
+        })}
+      </div>
+    )
   }
 
   return (
-    <div>
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>Repositories</h2>
       {contentElement}
       {hasNextPage ? (
-        <Button onClick={handleClickLoadMore}>Load More</Button>
+        <Button
+          onClick={handleClickLoadMore}
+          className={styles.button}
+        >
+           {isFetchMoreLoading ? 'Loading' : 'Load more'}
+        </Button>
       ) : null}
     </div>
   )
 
-  function handleClickLoadMore() {
-    fetchMore({
+  async function handleClickLoadMore() {
+    setFetchMoreLoading(true)
+
+    await fetchMore({
       variables: {
         after: data?.node?.repositories?.pageInfo?.endCursor
-      },
+      }
     })
+
+    setFetchMoreLoading(false)
   }
 }
 

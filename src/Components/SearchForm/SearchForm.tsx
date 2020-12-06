@@ -15,7 +15,7 @@ const SearchForm:React.FC<SearchFormTypes> = ({ onFormSubmit }) => {
       className={styles.form}
     >
       <Input onValueChange={handleChangeInput} />
-      <Button type="submit">
+      <Button type="submit" className={styles.button}>
         submit
       </Button>
     </form>

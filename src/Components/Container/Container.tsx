@@ -10,11 +10,11 @@ const Container:React.FC<ContainerTypes> = ({ isEmpty, isLoading, children, onFo
   let contentElement = null
 
   if (isLoading) {
-    contentElement = <div>Loading</div>
+    contentElement = <div className={styles.centered}>Loading</div>
   } else if (isEmpty && searchQuery.length > 0) {
-    contentElement = <div>No results</div>
+    contentElement = <div className={styles.centered}>No results</div>
   } else if (searchQuery.length === 0) {
-    contentElement = <div>Start searching</div>
+    contentElement = <div className={styles.centered}>Please, enter user name!</div>
   } else {
     contentElement = children
   }

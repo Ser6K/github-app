@@ -1,4 +1,20 @@
 .button {
+  height: 36px;
+  padding: 0 20px;
+
   border: 0;
-  border-radius: 0;
+  border-radius: 3px;
+
+  font-weight: bold;
+  line-height: 36px;
+
+  color: white;
+  background-color: rgba(0, 0, 0, .7);
+
+  cursor: pointer;
+
+  &:hover, &:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, .5);
+  }
 }

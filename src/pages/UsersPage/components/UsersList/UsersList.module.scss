@@ -1,5 +1,43 @@
-.list {
-  .card {
+.wrapper {
+  .title {
+    margin-bottom: 30px;
 
+    font-weight: bold;
+    font-size: 32px;
+  }
+  .list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    .list-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 20px;
+
+      border: 1px solid rgba(0, 0, 0, .2);
+      border-radius: 5px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+
+      cursor: pointer;
+      .list-item-avatar {
+        width: 120px;
+        height: 120px;
+
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, .2);
+
+        background: rgba(0, 0, 0, .1);
+      }
+      .list-item-name {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+      &:hover,
+      &.selected {
+        border: 1px solid rgba(0, 0, 0, 1)
+      }
+    }
   }
 }

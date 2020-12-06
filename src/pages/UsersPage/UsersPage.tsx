@@ -22,9 +22,11 @@ const USERS_QUERY = gql`
   ${USER_FRAGMENT}
 `
 
+/* TODO: Revise styling if time permits */
+
 const UsersPage:React.FC = () => {
   const [getSearchItems, { loading: isSearchLoading, data: searchData }] = useLazyQuery(USERS_QUERY)
-  const [selectedItemId, setSelectedItemId] = useState<string | null>(null)
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null)
 
   const searchResult = searchData?.search?.edges ?? []
 
@@ -34,20 +36,25 @@ const UsersPage:React.FC = () => {
       isEmpty={!isSearchLoading && searchResult.length === 0}
       onFormSubmit={handleSubmitForm}
     >
-      <UsersList users={searchResult} onClickUser={handleClickUser} />
-      {selectedItemId != null ? <UserRepositoriesList userId={selectedItemId} /> : null}
+      <UsersList users={searchResult} onClickUser={handleClickUser} selectedUserId={selectedUserId} />
+      {selectedUserId != null ? <UserRepositoriesList userId={selectedUserId} /> : null}
     </Container>
   )
 
   function handleSubmitForm(query: string) {
-    if (selectedItemId != null) {
-      setSelectedItemId(null)
+    if (selectedUserId != null) {
+      setSelectedUserId(null)
     }
+
+    if (query.length === 0) {
+      return
+    }
+
     getSearchItems({ variables: { query: `type:user in:name ${query}` } })
   }
 
   function handleClickUser(id: userIdType) {
-    setSelectedItemId(prevState => prevState !== id ? id : null)
+    setSelectedUserId(prevState => prevState !== id ? id : null)
   }
 }
 

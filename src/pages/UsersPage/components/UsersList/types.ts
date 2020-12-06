@@ -9,4 +9,5 @@ export interface UserTypes {
 export interface UsersListTypes {
   users: { node: UserTypes }[]
   onClickUser: (id: userIdType) => void
+  selectedUserId: userIdType | null
 }

@@ -16,11 +16,20 @@
   .form-input {
     margin-bottom: 20px;
   }
-
   .form-textarea {
     margin-bottom: 20px;
     height: 150px;
     resize: vertical;
+  }
+  .form-error {
+    box-sizing: border-box;
+    padding: 6px 20px;
+    margin-bottom: 20px;
+
+    background: rgba(255, 0, 0, .8);
+    color: white;
+
+    border-radius: 3px;
   }
   .form-actions {
     display: flex;

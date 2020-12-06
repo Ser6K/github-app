@@ -11,7 +11,7 @@ import { RepositoryIssuesTypes } from './types'
 
 import styles from './RepositoryIssues.module.scss'
 
-const REPOSITORY_ISSUES_QUERY = gql`
+export const REPOSITORY_ISSUES_QUERY = gql`
   query RepositoryIssues_Query($id: ID!, $first: Int, $after: String) {
     node(id: $id) {
       ... on Repository {

@@ -1,22 +1,36 @@
 import React, { useState, SyntheticEvent } from 'react'
 import { SearchFormTypes } from './types'
 
+import { useHistory } from 'react-router-dom'
+
 import Button from 'src/components/Button'
 import Input from 'src/components/Input'
 
+import { getUrlSearchParamValue } from 'src/utils'
+
 import styles from './SearchForm.module.scss'
 
-const SearchForm:React.FC<SearchFormTypes> = ({ onFormSubmit }) => {
-  const [inputValue, setInputValue] = useState('')
+const SearchForm:React.FC<SearchFormTypes> = () => {
+  const history = useHistory()
+
+  const urlQuery = getUrlSearchParamValue('q')
+  const [inputValue, setInputValue] = useState(urlQuery)
 
   return (
     <form
       onSubmit={handleSubmitForm}
       className={styles.form}
     >
-      <Input onValueChange={handleChangeInput} />
-      <Button type="submit" className={styles.button}>
-        submit
+      <Input
+        value={urlQuery}
+        onValueChange={handleChangeInput}
+      />
+      <Button
+        type="submit"
+        className={styles.button}
+        disabled={inputValue.length === 0 || urlQuery === inputValue}
+      >
+        Search
       </Button>
     </form>
   )
@@ -28,7 +42,11 @@ const SearchForm:React.FC<SearchFormTypes> = ({ onFormSubmit }) => {
   function handleSubmitForm(event: SyntheticEvent) {
     event.preventDefault()
 
-    onFormSubmit(inputValue)
+    if (urlQuery === inputValue || inputValue.length === 0) {
+      return
+    }
+
+    history.replace(`/?q=${inputValue}`)
   }
 }
 

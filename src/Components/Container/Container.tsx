@@ -5,17 +5,11 @@ import SearchForm from 'src/components/SearchForm'
 
 import styles from './Container.module.scss'
 
-const Container:React.FC<ContainerTypes> = ({ children, onFormSubmit }) => {
-  return (
-    <div className={styles.container}>
-      <SearchForm onFormSubmit={handleSubmitForm} />
-      {children}
-    </div>
-  )
-
-  function handleSubmitForm(query: string) {
-    onFormSubmit(query)
-  }
-}
+const Container:React.FC<ContainerTypes> = ({ children }) => (
+  <div className={styles.container}>
+    <SearchForm />
+    {children}
+  </div>
+)
 
 export default Container

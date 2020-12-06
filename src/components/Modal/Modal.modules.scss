@@ -1,3 +1,5 @@
+@import 'src/css/colors.scss';
+
 .modal {
   display: flex;
   position: fixed;
@@ -17,7 +19,7 @@
     overflow-y: auto;
     border-radius: 5px;
     z-index: 2;
-    background-color: white;
+    background-color: $white;
   }
   .overlay {
     position: absolute;
@@ -27,6 +29,6 @@
     left: 0;
 
     z-index: 1;
-    background: rgba(0, 0, 0, .5);
+    background: $lighter-gray;
   }
 }

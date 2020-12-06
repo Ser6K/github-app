@@ -1,6 +1,8 @@
 import React from 'react'
-import { ButtonTypes } from './types'
+
 import cx from 'classnames'
+
+import { ButtonTypes } from './types'
 
 import styles from './Button.module.scss'
 

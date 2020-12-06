@@ -1,13 +1,14 @@
 import React from 'react'
-
 import { useParams } from 'react-router-dom'
+
+import { RouteParamsTypes } from 'src/types'
 
 import Container from 'src/components/Container'
 import RepositoryInfo from './components/RepositoryInfo'
 import RepositoryIssues from './components/RepositoryIssues'
 
 const RepositoryPage:React.FC = () => {
-  const { id }: { id: string } = useParams()
+  const { id }: RouteParamsTypes = useParams()
 
   return (
     <Container>

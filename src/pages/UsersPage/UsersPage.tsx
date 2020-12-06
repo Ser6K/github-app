@@ -7,9 +7,9 @@ import ResultContainer from 'src/components/ResultContainer'
 import UserRepositoriesList from './components/UserRepositoriesList'
 import UsersList, { USER_FRAGMENT } from './components/UsersList'
 
-import { userIdType } from './components/UsersList/types'
-
 import { getUrlSearchParamValue } from 'src/utils'
+
+import { userIdType } from './components/UsersList/types'
 
 const USERS_QUERY = gql`
   query UsersPage_Query($query: String!) {

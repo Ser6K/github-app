@@ -1,7 +1,9 @@
+@import 'src/css/colors.scss';
+
 .modal-top {
   padding: 15px 0;
 
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  border-bottom: 1px solid $lighter-gray;
 
   .modal-top-title {
     font-size: 20px;
@@ -26,8 +28,8 @@
     padding: 6px 20px;
     margin-bottom: 20px;
 
-    background: rgba(255, 0, 0, .8);
-    color: white;
+    background: $red;
+    color: $white;
 
     border-radius: 3px;
   }

@@ -8,6 +8,7 @@ import Button from 'src/components/Button'
 import { ISSUE_FRAGMENT } from '../IssuesList/IssuesList'
 
 import { AddIssueModalTypes } from './types'
+import { RouteParamsTypes } from 'src/types'
 
 import styles from './AddIssueModal.module.scss'
 
@@ -23,7 +24,7 @@ const ADD_ISSUE_MUTATION = gql`
 `
 
 const AddIssueModal: React.FC<AddIssueModalTypes> = ({ onClose }) => {
-  const { id }: { id: string } = useParams()
+  const { id }: RouteParamsTypes = useParams()
   const [formValues, setFormValues] = useState({ title: '', comment: '' })
 
   const [executeAddIssueMutation, { loading, error }] = useMutation(ADD_ISSUE_MUTATION, {

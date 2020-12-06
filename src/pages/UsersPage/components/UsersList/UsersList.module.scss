@@ -1,3 +1,5 @@
+@import 'src/css/colors.scss';
+
 .wrapper {
   .title {
     margin-bottom: 30px;
@@ -6,6 +8,15 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+
+    @media screen and (max-width: 800px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 360px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
     .list-item {
       display: flex;
       flex-direction: column;
@@ -13,9 +24,9 @@
 
       padding: 20px;
 
-      border: 1px solid rgba(0, 0, 0, .2);
+      border: 1px solid $lighter-gray;
       border-radius: 5px;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+      box-shadow: 1px 1px 3px $lighter-gray;
 
       cursor: pointer;
       .list-item-avatar {
@@ -23,7 +34,7 @@
         height: 120px;
 
         border-radius: 50%;
-        border: 1px solid rgba(0, 0, 0, .2);
+        border: 1px solid $lighter-gray;
 
         background: rgba(0, 0, 0, .1);
       }

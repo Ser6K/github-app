@@ -1,7 +1,8 @@
 import React from 'react'
-import { ContainerTypes } from './types'
 
 import SearchForm from 'src/components/SearchForm'
+
+import { ContainerTypes } from './types'
 
 import styles from './Container.module.scss'
 

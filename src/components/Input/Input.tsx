@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { InputTypes } from './types'
 
 import cx from 'classnames'
+
+import { InputTypes } from './types'
 
 import styles from './Input.module.scss'
 

@@ -1,3 +1,5 @@
+@import 'src/css/colors.scss';
+
 .button {
   height: 36px;
   padding: 0 20px;
@@ -8,30 +10,30 @@
   font-weight: bold;
   line-height: 36px;
 
-  color: white;
-  background-color: rgba(0, 0, 0, .7);
+  color: $white;
+  background-color: $dark-gray;
 
   cursor: pointer;
 
   &:hover, &:focus {
     outline: none;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: $light-gray;
   }
   &.disabled {
     opacity: 0.3;
     &:hover {
-      background-color: rgba(0, 0, 0, .7);
+      background-color: $light-gray;
       cursor: default;
     }
   }
   &.transparent {
     box-sizing: border-box;
     background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, .5);
-    color: black;
+    border: 1px solid $light-gray;
+    color: $black;
     &:hover {
-      background-color: rgba(0, 0, 0, .7);
-      color: white;
+      background-color: $lighter-gray;
+      color: $white;
     }
   }
 }

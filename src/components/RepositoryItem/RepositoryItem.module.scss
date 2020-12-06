@@ -1,3 +1,5 @@
+@import 'src/css/colors.scss';
+
 .item {
   display: flex;
   justify-content: space-between;
@@ -7,10 +9,10 @@
   padding: 20px 30px;
 
   text-decoration: none;
-  color: black;
+  color: $black;
   font-weight: bold;
 
-  border-bottom: 1px solid rgba(0, 0, 0, .4);
+  border-bottom: 1px solid $lighter-gray;
 
   &:hover {
     background-color: rgba(0, 0, 0, .1);

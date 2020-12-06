@@ -1,12 +1,12 @@
-import React, { useState, SyntheticEvent } from 'react'
-import { SearchFormTypes } from './types'
-
+import React, { useState, SyntheticEvent, memo } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import Button from 'src/components/Button'
 import Input from 'src/components/Input'
 
 import { getUrlSearchParamValue } from 'src/utils'
+
+import { SearchFormTypes } from './types'
 
 import styles from './SearchForm.module.scss'
 
@@ -50,4 +50,4 @@ const SearchForm:React.FC<SearchFormTypes> = () => {
   }
 }
 
-export default SearchForm
+export default memo(SearchForm)

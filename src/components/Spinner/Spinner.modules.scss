@@ -1,3 +1,5 @@
+@import 'src/css/colors.scss';
+
 .spinner {
   display: inline-block;
   width: 40px;
@@ -11,8 +13,8 @@
   height: 35px;
 
   border-radius: 50%;
-  border: 5px solid black;
-  border-color: black transparent black transparent;
+  border: 5px solid $black;
+  border-color: $black transparent $black transparent;
   animation: animate 1.2s linear infinite;
 }
 

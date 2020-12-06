@@ -1,5 +1,8 @@
 import React from 'react'
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
+
+import cx from 'classnames'
+
 import { UsersListTypes, userIdType } from './types'
 
 import styles from './UsersList.module.scss'
@@ -23,8 +26,8 @@ const UsersList:React.FC<UsersListTypes> = ({ users, onClickUser, selectedUserId
       <div className={styles.list}>
         {users.map((edge) => (
           <div
-            className={`${styles['list-item']} ${edge.node.id === selectedUserId ? styles.selected : ''}`}
             key={edge.node.id}
+            className={cx(styles['list-item'], { [styles.selected]: edge.node.id === selectedUserId })}
             onClick={() => handleClickItem(edge.node.id)}
           >
             <img

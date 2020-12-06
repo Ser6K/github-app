@@ -1,7 +1,8 @@
 import React from 'react'
-import { ResultContainerTypes } from './types'
 
 import Spinner from 'src/components/Spinner'
+
+import { ResultContainerTypes } from './types'
 
 import styles from './ResultContainer.module.scss'
 

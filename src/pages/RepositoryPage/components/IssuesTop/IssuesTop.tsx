@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 
 import Button from 'src/components/Button'
 import AddIssueModal from '../AddIssueModal'
@@ -25,4 +25,4 @@ const IssuesTop: React.FC = () => {
   }
 }
 
-export default IssuesTop
+export default memo(IssuesTop)

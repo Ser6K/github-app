@@ -3,6 +3,7 @@ export type userIdType = string
 export interface UserTypes {
   id: userIdType
   name: string | null
+  login: string
   avatarUrl: string
 }
 

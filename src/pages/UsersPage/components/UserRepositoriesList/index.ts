@@ -1,1 +1,1 @@
-export { default, REPOSITORY_FRAGMENT } from './UserRepositoriesList'
+export { default } from './UserRepositoriesList'

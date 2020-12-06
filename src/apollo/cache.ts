@@ -1,4 +1,5 @@
-import { InMemoryCache, Reference } from '@apollo/client'
+import { InMemoryCache } from '@apollo/client'
+import { mergeFieldResult } from 'src/utils'
 
 const cache: InMemoryCache = new InMemoryCache({
   typePolicies: {
@@ -7,20 +8,17 @@ const cache: InMemoryCache = new InMemoryCache({
         repositories: {
           keyArgs: false,
           merge(existing, incoming) {
-            let repositories: Reference[] = []
-
-            if (existing?.edges != null) {
-              repositories = repositories.concat(existing.edges)
-            }
-
-            if (incoming?.edges != null) {
-              repositories = repositories.concat(incoming.edges)
-            }
-
-            return {
-              ...incoming,
-              edges: repositories
-            }
+            return mergeFieldResult(existing, incoming)
+          }
+        }
+      }
+    },
+    Repository: {
+      fields: {
+        issues: {
+          keyArgs: false,
+          merge(existing, incoming) {
+            return mergeFieldResult(existing, incoming)
           }
         }
       }

@@ -1,0 +1,13 @@
+.repository-base {
+  padding-left: 0;
+  padding-right: 0;
+
+  border-bottom: none;
+  &:hover {
+    background: none;
+    cursor: default;
+  }
+  .repository-base-name {
+    font-size: 28px;
+  }
+}

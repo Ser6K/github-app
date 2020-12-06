@@ -14,7 +14,7 @@ const Routes = () => (
       <Route exact path="/">
         <UsersPage />
       </Route>
-      <Route exact path="/repository/:Id">
+      <Route exact path="/repository/:id">
         <RepositoryPage />
       </Route>
     </Switch>

@@ -1,0 +1,11 @@
+.centered {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .message {
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
